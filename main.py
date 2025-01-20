@@ -14,7 +14,7 @@ def main():
             parts = line.split(" ")
             command = parts[0]
             args = parts[1:]
-            shell_builtins = {"echo", "exit", "type"}
+            shell_builtins = {"echo", "exit", "type","pwd"}
 
             if command == "exit":
                 if len(parts) > 1 and parts[1] == "0":
@@ -24,7 +24,9 @@ def main():
                 else:
                     print("Error: Usage is 'exit 0'")
                     continue
-
+            elif command=="pwd":
+                print(os.getcwd())
+                continue
             elif command == "type":
                 if len(parts) > 1:
                     word = parts[1]
